@@ -3,7 +3,7 @@ import {LOAD_STREETS, LOAD_HOUSES, LOAD_FLATS, ERROR, SEARCH_FOR_MATCHES, LOAD_I
 export const loadStreetsAC = () => async dispatch => {
     try {
         dispatch(loaderOnAC())
-        const response = await fetch('https://dispex.org/api/vtest/Request/streets', {mode: "no-cors"})
+        const response = await fetch('https://dispex.org/api/vtest/Request/streets', {mode: "cors"})
         const jsonData = await response.json()
         dispatch({type: LOAD_STREETS, data: jsonData})
         dispatch(loaderOffAC())
@@ -14,7 +14,7 @@ export const loadStreetsAC = () => async dispatch => {
 
 export const loadHousesAC = (id) => async dispatch => {
     try {
-        const response = await fetch(`https://dispex.org/api/vtest/Request/houses/${id}`, {mode: "no-cors"})
+        const response = await fetch(`https://dispex.org/api/vtest/Request/houses/${id}`, {mode: "cors"})
         const jsonData = await response.json()
         dispatch({type: LOAD_HOUSES, data: jsonData})
     } catch (error) {
@@ -24,7 +24,7 @@ export const loadHousesAC = (id) => async dispatch => {
 
 export const loadFlatsAC = (id) => async dispatch => {
     try {
-        const response = await fetch(`https://dispex.org/api/vtest/Request/house_flats/${id}`, {mode: "no-cors"})
+        const response = await fetch(`https://dispex.org/api/vtest/Request/house_flats/${id}`, {mode: "cors"})
         const jsonData = await response.json()
         dispatch({type: LOAD_FLATS, data: jsonData})
     } catch (error) {
